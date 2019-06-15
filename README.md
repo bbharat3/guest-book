@@ -1,6 +1,6 @@
 # guest-book
 
-`2 nodes of DS1_v1 type is used.
+`2 nodes of DS1_v2 type is used.
 one node is for running single replica of each component of demo app and required components of k8s
 second node is for HA and extending the support for hpa.
 `
