@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: staging-ingress
+  namespace: staging
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: staging-guestbook.mstakx.io
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: frontend
+            servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prod-ingress
+  namespace: production
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: production-guestbook.mstakx.io
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: frontend
+            servicePort: 80

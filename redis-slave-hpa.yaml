@@ -1,0 +1,13 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodScaler
+metadata:
+  name: redis-slave-hpa
+  namespace: staging
+spec:
+  scaleTargetref:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: redis-slave
+  minRepicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 10
