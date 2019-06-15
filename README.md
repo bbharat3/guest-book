@@ -1,5 +1,9 @@
 # guest-book
 
+# Assumptions
+1. User is logged in with az-cli
+2. CPU utilization for hpa is 10%
+
 # Pre-requisites
 1. Azure kubernetes cluster should be available.
 2. helm should be installed.
