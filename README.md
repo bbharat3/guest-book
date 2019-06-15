@@ -29,7 +29,13 @@ make allinone
 # Deploy Horizontal pod autoscaler
 kubectl apply -f frontend-hpa.yaml
 
+# Load Testing
+For increasing load many tools can be used like jmeter.
+I have used a traditional approach which includes creating of a pod with busybox image and executing the below command
 
+`while true; do wget -q -O- http://<cluster ip>:<port>;done`
+
+# Notes
 Helm is used as the package manager to deploy nginx ingress since it deploys all the required components for ingress as a package and interacts with underlying cloud provider to create a load balancer for the same
 
 For monitoring, I believe prometheus can be used to get time-series data and monitoring how the container is performing.
