@@ -36,9 +36,9 @@ I have used a traditional approach which includes creating of a pod with busybox
 `while true; do wget -q -O- http://<cluster ip>:<port>;done`
 
 # Notes
-``Helm is used as the package manager to deploy nginx ingress since it deploys all the required components for ingress as a package and interacts with underlying cloud provider to create a load balancer for the same
+Helm is used as the package manager to deploy nginx ingress since it deploys all the required components for ingress as a package and interacts with underlying cloud provider to create a load balancer for the same
 
 For monitoring, I believe prometheus can be used to get time-series data and monitoring how the container is performing.
 
 Further, I believe the install istio will help more to manage k8s cluster and also the application in a better manner.
-Some of its features includes all the required addon for monitoring, networking, management, canary deployment etc.``
+Some of its features includes all the required addon for monitoring, networking, management, canary deployment etc.
