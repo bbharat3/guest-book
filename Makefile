@@ -6,9 +6,6 @@ create_ingress:
 	helm install stable/nginx-ingress --name ingress --set controller.publishService.enabled=true    
 	kubectl apply -f ./guest-book/ingress.yaml
 
-install_guestbook:
-	kubectl apply -f ./examples/guestbook/all-in-one/guestbook-all-in-one.yaml
-
 frontend_hpa:
 	kubectl apply -f ./guest-book/frontend-hpa.yaml
 
