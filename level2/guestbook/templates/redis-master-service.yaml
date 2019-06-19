@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-{{ .Values.mredis.role }}
+  labels:
+    app: redis
+    role: {{ .Values.mredis.role }}
+    tier: backend
+    chart: {{ template "guestbook.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.mredis.service.type }}
+  ports:
+    - port: {{ .Values.mredis.service.port }}
+    
+  selector:
+    app: redis
+    role: {{ .Values.mredis.role }}
+    tier: backend
+    release: {{ .Release.Name }}

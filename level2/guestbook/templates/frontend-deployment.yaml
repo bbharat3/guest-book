@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: frontend
+
+spec:
+  replicas: {{ .Values.frontend.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "guestbook.name" . }}
+      tier: frontend
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "guestbook.name" . }}
+        tier: frontend
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: php-redis
+          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          ports:
+          - containerPort: 80

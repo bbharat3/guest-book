@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: redis-{{ .Values.mredis.role }}
+spec:
+  replicas: {{ .Values.mredis.replicaCount }}
+  selector:
+    matchLabels:
+      app: redis
+      role: {{ .Values.mredis.role }}
+      tier: backend
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: {{ .Values.mredis.role }}
+        tier: backend
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: master
+          image: "{{ .Values.mredis.image.repository }}:{{ .Values.mredis.image.tag }}"
+          imagePullPolicy: {{ .Values.mredis.image.pullPolicy }}
+          ports:
+          - containerPort: 6379
