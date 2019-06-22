@@ -72,7 +72,7 @@ Some of its features includes all the required addon for monitoring, networking,
    `curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo; \
    sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key; yum install -y jenkins; service jenkins start`
 
-   Url: http://<host IP>:8080/
+   Url: `http://<host IP>:8080/`
 
 # Pre-requisites for integration with kubernetes
 1. kubernetes plugin should be installed
