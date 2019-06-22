@@ -90,6 +90,31 @@ Some of its features includes all the required addon for monitoring, networking,
 
 Once the above build is successful it will install the package and assign a random name to the components.
 
+# Getting metrics from prometheus 
+
+I have used port forwarding to access prometheus
+`kubectl -n monitoring port-forward svc/prometheus 81234:80`
+
+Access the application using http://localhost:81234
+
+Add query to the query box and metrics will be available 
+
+# Creating dashboard using grafana
+
+Once grafana pods are available execute the below command to get the  admin password
+ `kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo`
+
+Port forward to grafana
+ `kubectl -n monitoring port-forward svc/prometheus 8124:80`
+
+Access the application using http://localhost:8124 
+
+Add datasource to get metrics from prometheus
+ 
+ Select prometheus type datasource and pass http://<cluster ip of prometheus service> and save and test the details
+
+ Once the connection is successful, go to create new dashboard and add query and execute.
+ Dashboard will be generate immediately.
 
    
 
